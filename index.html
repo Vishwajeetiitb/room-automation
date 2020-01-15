@@ -1,45 +1,122 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Room Automation</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>jQuery rotarySwitch Plugin Examples</title>
+    <link
+      href="http://www.jqueryscript.net/css/jquerysctipttop.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link href="jquery.rotaryswitch.css" rel="stylesheet" type="text/css" />
+    <style>
+      .container {
+        margin: 20px auto;
+        max-width:max-content;
+        /* margin: 150px auto; */
+        text-align: center;
+      }
+    </style>
+  </head>
 
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+      <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-analytics.js"></script>
-  
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-analytics.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDuod81k3BcVtyZi0TpndVuglgALxAIt1E",
-    authDomain: "vishwajeet-1557973724237.firebaseapp.com",
-    databaseURL: "https://vishwajeet-1557973724237.firebaseio.com",
-    projectId: "vishwajeet-1557973724237",
-    storageBucket: "vishwajeet-1557973724237.appspot.com",
-    messagingSenderId: "406981432358",
-    appId: "1:406981432358:web:ccb5a58096c0de23bf82e7",
-    measurementId: "G-JNZ3EPYV1L"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-   console.log("hi");
-   var database = firebase.database();
-   var testref = database.ref('vishwajeet');
-   testref.set({test: "hello"}) ; 
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyDuod81k3BcVtyZi0TpndVuglgALxAIt1E",
+        authDomain: "vishwajeet-1557973724237.firebaseapp.com",
+        databaseURL: "https://vishwajeet-1557973724237.firebaseio.com",
+        projectId: "vishwajeet-1557973724237",
+        storageBucket: "vishwajeet-1557973724237.appspot.com",
+        messagingSenderId: "406981432358",
+        appId: "1:406981432358:web:ccb5a58096c0de23bf82e7",
+        measurementId: "G-JNZ3EPYV1L"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      console.log("hi");
+      var database = firebase.database();
+      var testref = database.ref("nighlight");
+      var fanref = database.ref("fanspeed");
+      //  testref.set({test: "hello"}) ;
+    </script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <div style="text-align: center;">
+      <h1>Night Led :</h1>
+      <button onclick="nightled()" id="demo" style="font-size: 20px;">
+        On
+      </button>
+  
+    </div>
+    
+    </div>
+    <div class="container">
+      <h1>FanSpeed</h1>
+      <div style="margin-bottom: 50px;"></div>
+      <input type="text" class="rotarySwitch" value="0" />
+    </div>
 
-</script>
-<script type="text/javascript" src="js/main.js"></script>
-<div style="text-align: center;">
-<button onclick="myFunction()" id="demo" style="font-size: 500px;">On </button>
-</div>
-</body>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="jquery.rotaryswitch.js"></script>
+    <script>
+      $(function() {
+        $(".rotarySwitch").rotaryswitch({ themeClass: "big" });
+        $(".rotarySwitch2").rotaryswitch({
+          showMarks: true,
+          themeClass: "light"
+        });
+        var rotarySwitch3a = $(".rotarySwitch3a").rotaryswitch({
+            beginDeg: 270,
+            lengthDeg: 180,
+            minimum: 0,
+            maximum: 10,
+            step: 0.5,
+            showMarks: true
+          }),
+          rotarySwitch3b = $(".rotarySwitch3b").rotaryswitch({
+            minimum: 0,
+            maximum: 10,
+            step: 0.5,
+            hideInput: false
+          });
+
+        rotarySwitch3a.on("change", function() {
+          rotarySwitch3b.val(rotarySwitch3a.val()).change();
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(["_setAccount", "UA-36251023-1"]);
+      _gaq.push(["_setDomainName", "jqueryscript.net"]);
+      _gaq.push(["_trackPageview"]);
+
+      (function() {
+        var ga = document.createElement("script");
+        ga.type = "text/javascript";
+        ga.async = true;
+        ga.src =
+          ("https:" == document.location.protocol
+            ? "https://ssl"
+            : "http://www") + ".google-analytics.com/ga.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
 </html>
